@@ -1,0 +1,38 @@
+﻿@page
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.Extensions.Localization
+@using Telehealth.Localization
+@using Telehealth.Permissions
+@inject IStringLocalizer<TelehealthResource> L
+@inject IAuthorizationService AuthorizationService
+@model Telehealth.Web.Pages.Doctors.IndexModel
+@{
+}
+@section scripts{
+    <script src="/Pages/Doctors/Skills/sortable.js"></script>
+    <abp-script src="/Pages/Doctors/Index.js"/>
+}
+<abp-card-header>
+    <abp-row>
+        <abp-column size-md="_6">
+            <abp-card-title>
+                <i class='fas fa-chalkboard-teacher'></i>
+                @L["Doctors"].Value
+            </abp-card-title>
+        </abp-column>
+        <abp-column size-md="_6" class="text-right d-flex justify-content-end gap-2 my-1">
+            <abp-button id="sublvl"
+                        text="Main and Sub Specialties"
+                            icon="plus"
+                            button-type="Primary" />
+                @if (await AuthorizationService.IsGrantedAsync(TelehealthPermissions.Doctor.Create))
+                {
+                <abp-button id="NewDoctorButton"
+                            text="@L["NewDoctor"].Value"
+                            icon="plus"
+                            button-type="Primary" />
+                }
+        </abp-column>
+    </abp-row>
+</abp-card-header>
+<abp-table striped-rows="true" id="DoctorTable"></abp-table>

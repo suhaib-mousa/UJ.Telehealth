@@ -1,0 +1,21 @@
+﻿@page
+@using Microsoft.Extensions.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@using Telehealth.Localization
+@inject IStringLocalizer<TelehealthResource> L
+@model Telehealth.Web.Pages.Doctors.EditModalModel
+@{
+}
+@{
+    Layout = null;
+}
+<abp-dynamic-form abp-model="UpdateDoctorDto" asp-page="/Doctors/EditModal">
+    <abp-modal>
+        <abp-modal-header title="@L["Update"].Value"></abp-modal-header>
+        <abp-modal-body>
+            <abp-input asp-for="Id" />
+            <abp-form-content />
+        </abp-modal-body>
+        <abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>
+    </abp-modal>
+</abp-dynamic-form>

@@ -1,0 +1,378 @@
+﻿@page
+@model Telehealth.Web.Public.Pages.IndexModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Telehealth.Localization
+@inject IHtmlLocalizer<TelehealthResource> L
+@using Volo.Abp.Users
+@inject ICurrentUser CurrentUser
+
+<style>
+    .text-primary {
+        --bs-text-opacity: 1;
+        color: rgb(132 246 188) !important;
+    }
+
+    header .navbar .iq-nav-menu.navbar-nav li a.nav-link.active {
+        color: #80f6ba !important;
+    }
+
+    :root {
+        --bs-primary: #80f6ba;
+    }
+
+    .bg-primary-subtle {
+        background-color: #d6fbe4 !important;
+    }
+
+    .bg-primary {
+        --bs-bg-opacity: 1;
+        background-color: #171c26 !important;
+    }
+</style>
+<div class="eyecare-banner  pb-5 eyes-carebg-right">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="section-padding pe-0 ps-0">
+                    <div class="no-sub-title big-font">
+                        <div class="iq-title-box">
+                            <span class="iq-subtitle text-uppercase"></span>
+                            <h2 class="iq-title iq-heading-title">
+                                <span class="right-text text-capitalize fw-500">
+                                    Online Clinic Service <br> That You
+                                </span>
+                                <span class="left-text text-capitalize fw-light"><span class='text-primary'>Can Trust</span></span>
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="button-primary">
+                        <div class="iq-btn-container">
+                            <a class="iq-button text-capitalize" href="/LiveCoaching/Coaches">
+                                <span class="iq-btn-text-holder position-relative">Get Appoinement</span>
+                                <span class="iq-btn-icon-holder">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 8 8" fill="none">
+                                        <path d="M7.32046 4.70834H4.74952V7.25698C4.74952 7.66734 4.41395 8 4 8C3.58605 8 3.25048 7.66734 3.25048 7.25698V4.70834H0.679545C0.293423 4.6687 0 4.34614 0 3.96132C0 3.5765 0.293423 3.25394 0.679545 3.21431H3.24242V0.673653C3.28241 0.290878 3.60778 0 3.99597 0C4.38416 0 4.70954 0.290878 4.74952 0.673653V3.21431H7.32046C7.70658 3.25394 8 3.5765 8 3.96132C8 4.34614 7.70658 4.6687 7.32046 4.70834Z" fill="currentColor"></path>
+                                    </svg>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7 position-relative eye-care-title">
+                <div class="scrolling-text position-absolute">
+                    <div class="iq-title text-uppercase">eye</div>
+                </div>            <img src="~/images/favicon/main image.jpg" alt="img"
+                                       class="img-fluid position-relative mt-lg-5 pt-5 rtl-image-flip">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section-padding-bottom p-5">
+    <div class="container">
+        <div class="box-card-main benefits-main">
+            <div class="row align-items-center">
+                <div class="col-xl-4 col-lg-5">
+                    <div class="iq-title-box">
+                        <span class="iq-subtitle text-uppercase">BENEFITS</span>
+                        <h2 class="iq-title iq-heading-title">
+                            <span class="right-text text-capitalize fw-500"> Best Benefits</span>
+                            <span class="left-text text-capitalize fw-light">With TeleHealth</span>
+                        </h2>
+                        <p class="iq-title-desc text-body mt-3 mb-0">
+
+                        </p>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-7 mb-5 mb-lg-0">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="box-transparent no-img-bg pe-lg-5">
+                        <div class="iq-icon-box transprent iconbox-has-border">
+                            <div class="iq-img-area pulse-shrink-on-hover d-inline-block">
+                                <img src="./assets/images/eye-care/eye-03.webp"
+                                     alt="icon"
+                                     class="img-fluid"
+                                     loading="lazy" />
+                            </div>
+                            <div class="icon-box-content mt-5">
+                                <h4 class="mb-2">Qualified Doctors</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="box-transparent no-img-bg pe-lg-5">
+                        <div class="iq-icon-box transprent iconbox-has-border">
+                            <div class="iq-img-area pulse-shrink-on-hover d-inline-block">
+                                <img src="./assets/images/eye-care/eye-04.webp"
+                                     alt="icon"
+                                     class="img-fluid"
+                                     loading="lazy" />
+                            </div>
+                            <div class="icon-box-content mt-5">
+                                <h4 class="mb-2">Work Improvements</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="box-transparent no-img-bg pe-lg-5">
+                        <div class="iq-icon-box transprent">
+                            <div class="iq-img-area pulse-shrink-on-hover d-inline-block">
+                                <img src="./assets/images/eye-care/eye-05.webp"
+                                     alt="icon"
+                                     class="img-fluid"
+                                     loading="lazy" />
+                            </div>
+                            <div class="icon-box-content mt-5">
+                                <h4 class="mb-2">Restoring Confidence</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="iq-about-us bg-primary-subtle text-body">
+    <div class="container-fluid p-0">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="section-padding spacing-ls-rs">
+                    <div class="position-relative">
+                        <div class="scrolling-text position-absolute">
+                            <div class="iq-title text-uppercase">
+                                About
+                                Us
+                            </div>
+                        </div>
+                    </div>
+                    <div class="iq-title-box">
+                        <span class="iq-subtitle text-uppercase">ABOUT OUR CLINIC</span>
+                        <h2 class="iq-title iq-heading-title">
+                            <span class="right-text text-capitalize fw-500">
+                                We are an online health
+                            </span>
+                            <span class="left-text text-capitalize fw-light"><br> Care center</span>
+                        </h2>
+                        <p class="iq-title-desc text-body mt-3 mb-0">
+                            Welcome to our online healthcare clinic, where your health and well-being are our top priorities. We offer a wide range of medical services to meet your needs from the comfort of your home.
+                        </p>
+                    </div>
+                    <h5 class="iq-title iq-heading-title mb-2">YOUR HEALTH, OUR PRIORITY</h5>
+                    <p class="iq-title-desc mb-5">
+                        Our mission is to provide accessible and reliable healthcare services. Whether it's a minor illness, a routine checkup, or specialized care, we are here to support your health journey every step of the way.
+                    </p>
+                    <div class="row">
+                        <div class="col-md-6 col-xxl-3 col-xl-4">
+                            <ul class="iq-list-with-icon p-0">
+                                <li class="d-flex align-items-center gap-2 mb-3">
+                                    <i class="fa fa-check text-primary" aria-hidden="true"></i><span>Treats minor illnesses</span>
+                                </li>
+                                <li class="d-flex align-items-center gap-2 mb-3">
+                                    <i class="fa fa-check text-primary" aria-hidden="true"></i><span>Answers health questions</span>
+                                </li>
+                                <li class="d-flex align-items-center gap-2 mb-3">
+                                    <i class="fa fa-check text-primary" aria-hidden="true"></i><span>Conducts health checkups</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6 col-xxl-3 col-xl-4">
+                            <ul class="iq-list-with-icon p-0">
+                                <li class="d-flex align-items-center gap-2 mb-3">
+                                    <i class="fa fa-check text-primary" aria-hidden="true"></i><span>Specialty physicians</span>
+                                </li>
+                                <li class="d-flex align-items-center gap-2 mb-3">
+                                    <i class="fa fa-check text-primary" aria-hidden="true"></i><span>Performs routine health tests</span>
+                                </li>
+                                <li class="d-flex align-items-center gap-2 mb-3">
+                                    <i class="fa fa-check text-primary" aria-hidden="true"></i><span>Best treatment</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-xxl-3 d-xxl-block d-none"></div>
+                        <div class="col-xxl-3 col-xl-4 pe-xxl-5">
+                            <div class="overflow-hidden">
+                                <div class="position-relative title-box-slider bg-primary d-none d-xl-block swiper swiper-general" id="titlebox-slider" data-slide="1" data-laptop="1" data-tab="1" data-mobile="1" data-mobile-sm="1" data-autoplay="true" data-loop="true" data-navigation="true" data-pagination="true">
+                                    <ul class="p-0 m-0 mb-5 swiper-wrapper list-inline">
+                                        <li class="swiper-slide">
+                                            <div class="text-slider-content position-relative p-4">
+                                                <h2 class="iq-title iq-heading-title">300 +</h2>
+                                                <p class="iq-title-desc">
+                                                    Happy customers <br> served
+                                                </p>
+                                            </div>
+                                        </li>
+                                        <li class="swiper-slide">
+                                            <div class="text-slider-content position-relative p-4">
+                                                <h2 class="iq-title iq-heading-title">25 +</h2>
+                                                <p class="iq-title-desc">
+                                                    Talented in-house <br> doctors
+                                                </p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 mt-4">
+                            <div class="button-primary">
+                                <div class="iq-btn-container">
+                                    <a class="iq-button text-capitalize" href="/LiveCoaching/Coaches">
+                                        <span class="iq-btn-text-holder position-relative">Get Appointment</span>
+                                        <span class="iq-btn-icon-holder">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 8 8" fill="none">
+                                                <path d="M7.32046 4.70834H4.74952V7.25698C4.74952 7.66734 4.41395 8 4 8C3.58605 8 3.25048 7.66734 3.25048 7.25698V4.70834H0.679545C0.293423 4.6687 0 4.34614 0 3.96132C0 3.5765 0.293423 3.25394 0.679545 3.21431H3.24242V0.673653C3.28241 0.290878 3.60778 0 3.99597 0C4.38416 0 4.70954 0.290878 4.74952 0.673653V3.21431H7.32046C7.70658 3.25394 8 3.5765 8 3.96132C8 4.34614 7.70658 4.6687 7.32046 4.70834Z" fill="currentColor"></path>
+                                            </svg>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="team-section section-padding">
+    <div class="container">
+        <div class="text-center position-relative">
+            <div class="scrolling-text position-absolute">
+                <div class="iq-title text-uppercase">Our Doctors</div>
+            </div>         <div class="iq-title-box">
+                <span class="iq-subtitle text-uppercase">Doctors</span>
+                <h2 class="iq-title iq-heading-title">
+                    <span class="right-text text-capitalize fw-500">
+                        Our
+                        outstanding
+                    </span>
+                    <span class="left-text text-capitalize fw-light">doctors</span>
+                </h2>
+                <p class="iq-title-desc text-body mt-3 mb-0">
+
+                </p>
+            </div>
+        </div>
+        <div class="position-relative overflow-hidden swiper swiper-general" data-slide="3" data-laptop="3" data-tab="2"
+             data-mobile="1" data-mobile-sm="1" data-autoplay="true" data-loop="true" data-navigation="true"
+             data-pagination="true">
+            <ul class="p-0 m-0 mb-5 swiper-wrapper list-inline">
+                @foreach (var n in Model.DoctorsList)
+                {
+                    <li class="swiper-slide">
+
+                        <div class="iq-team-block team-standard position-relative">
+                            <div class="iq-team-img">
+                                <img src="/api/account/profile-picture-file/@n.Id" alt="team" class="img-fluid w-100" loading="lazy">
+                            </div>
+                            <div class="iq-team-info text-center pt-5 px-3 pb-3 letter-spacing-1">
+                                <a href="./doctor-details.html">
+                                    <h5 class="mb-2 iq-team-title">@n.Surname</h5>
+                                </a>
+                                <p class="mb-0 mt-1 text-uppercase fw-500 letter-spacing-2">@n.Name</p>
+                            </div>
+                        </div>
+                    </li>
+                
+                }
+
+            </ul>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+</div>
+
+<div class="eye-care-service section-padding bg-primary-subtle text-body">
+    <div class="container">
+        <div class="row align-items-center section-padding-bottom ps-0 pe-0">
+            <div class="col-lg-6 pe-xl-5">
+                <div class="position-relative">
+                    <div class="scrolling-text position-absolute">
+                        <div class="iq-title text-uppercase">services</div>
+                    </div>
+                </div>
+                <div class="iq-title-box">
+                    <span class="iq-subtitle text-uppercase">Services</span>
+                    <h2 class="iq-title iq-heading-title">
+                        <span class="right-text text-capitalize fw-500">
+                            We Provide Friendly And Useful
+                        </span>
+                        <span class="left-text text-capitalize fw-light">Medical Services.</span>
+                    </h2>
+                    <p class="iq-title-desc text-body mt-3 mb-0">
+                        Our online healthcare clinic offers a variety of services designed to meet your medical needs. From routine checkups to specialized care, we aim to provide top-notch medical services that you can access conveniently from your home.
+                    </p>
+                </div>
+                <div class="button-primary">
+                    <div class="iq-btn-container">
+                        <a class="iq-button text-capitalize" href="/LiveCoaching/Coaches">
+                            <span class="iq-btn-text-holder position-relative">Get Appointment</span>
+                            <span class="iq-btn-icon-holder">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 8 8" fill="none">
+                                    <path d="M7.32046 4.70834H4.74952V7.25698C4.74952 7.66734 4.41395 8 4 8C3.58605 8 3.25048 7.66734 3.25048 7.25698V4.70834H0.679545C0.293423 4.6687 0 4.34614 0 3.96132C0 3.5765 0.293423 3.25394 0.679545 3.21431H3.24242V0.673653C3.28241 0.290878 3.60778 0 3.99597 0C4.38416 0 4.70954 0.290878 4.74952 0.673653V3.21431H7.32046C7.70658 3.25394 8 3.5765 8 3.96132C8 4.34614 7.70658 4.6687 7.32046 4.70834Z" fill="currentColor"></path>
+                                </svg>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="row pb-lg-5 mt-md-5">
+                    <div class="col-lg-5 col-md-6 mb-3 mt-3 mt-lg-0">
+                        <div class="iq-counter iq-counter-icon d-flex align-items-center gap-3 gap-md-5">
+                            <div class="iq-counter-icon">
+                                <i aria-hidden="true" class="flaticon flaticon-government text-primary"></i>
+                            </div>
+                            <div class="counter-content">
+                                <h3 class="counter m-0">75+</h3>
+                                <p class="counter-text m-0">Specialized Doctors</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-1 d-lg-block d-none border-start"></div>
+                    <div class="col-lg-5 col-md-6 mb-3">
+                        <div class="iq-counter iq-counter-icon d-flex align-items-center gap-3 gap-md-5">
+                            <div class="iq-counter-icon">
+                                <i aria-hidden="true" class="flaticon flaticon-care text-primary"></i>
+                            </div>
+                            <div class="counter-content">
+                                <h3 class="counter m-0">10+</h3>
+                                <p class="counter-text m-0">Awards Won</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-5 col-md-6 mb-3">
+                        <div class="iq-counter iq-counter-icon d-flex align-items-center gap-3 gap-md-5">
+                            <div class="iq-counter-icon">
+                                <i aria-hidden="true" class="flaticon flaticon-rating text-primary"></i>
+                            </div>
+                            <div class="counter-content">
+                                <h3 class="counter m-0">150+</h3>
+                                <p class="counter-text m-0">Appointments</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-1 d-lg-block d-none border-start"></div>
+                    <div class="col-lg-5 col-md-6 mb-0 mb-md-0">
+                        <div class="iq-counter iq-counter-icon d-flex align-items-center gap-3 gap-md-5">
+                            <div class="iq-counter-icon">
+                                <i aria-hidden="true" class="flaticon flaticon-debit-card text-primary"></i>
+                            </div>
+                            <div class="counter-content">
+                                <h3 class="counter m-0">250+</h3>
+                                <p class="counter-text m-0">Young Visitors</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

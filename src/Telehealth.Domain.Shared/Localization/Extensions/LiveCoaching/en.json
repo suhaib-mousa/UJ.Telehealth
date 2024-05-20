@@ -1,0 +1,13 @@
+{
+  "culture": "en",
+  "texts": {
+    "LiveCoaching:Skill:Select:MainSpecialties": "Choose main specialties",
+    "LiveCoaching:Skill:Select:Sub-Specialties": "Choose sub-specialties",
+    "LiveCoaching:CoachesList:Title": "Doctors page",
+    "LiveCoaching:CoachesList:Description": "Choose your doctor 😊",
+    "MySessions": "My Sessions",
+    "Checkout:Details": "Checkout",
+    "Skill": "Specialty",
+    "LiveCoaching:CoachList:CoachesTotalCount": "Doctors count"
+  }
+}

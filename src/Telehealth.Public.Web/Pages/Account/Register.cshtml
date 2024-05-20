@@ -1,0 +1,43 @@
+﻿@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Volo.Abp.Account.Localization
+@model Telehealth.Public.Web.Pages.Account.RegisterModel
+@inject IHtmlLocalizer<AccountResource> L
+@{
+    Layout = "/Themes/Layouts/Account.cshtml";
+}
+<style>
+    .mb-3 {
+        margin-bottom: 0rem !important;
+    }
+</style>
+<div class=" ">
+    <div class="card-body p-1">
+        <h4>@L["Register"]</h4>
+        <strong>
+            @L["AlreadyRegistered"]
+            <a href="@Url.Page("./Login", new {returnUrl = Model.ReturnUrl, returnUrlHash = Model.ReturnUrlHash})" class="text-decoration-none text-success">@L["Login"]</a>
+        </strong>
+        <form method="post" class="mt-4">
+
+            <input class="form-control" asp-for="Input.UserName" auto-focus="true" placeholder="Username *" required/>
+
+            <div class="input-group">
+                <input class="form-control" asp-for="Input.Name" placeholder="First name *" required />
+                <input class="form-control" asp-for="Input.Surname" placeholder="Surname *" required />
+            </div>
+
+
+            <input class="form-control" asp-for="Input.EmailAddress" placeholder="Email *" required />
+
+            <input class="form-control" asp-for="Input.Password" placeholder="Password *" required />
+
+                 <div class="d-grid gap-2">
+                     <abp-button button-type="Success" type="submit" class="btn-lg mt-4">@L["Register"]</abp-button>
+                 </div>
+            
+
+        </form>
+
+    </div>
+</div>

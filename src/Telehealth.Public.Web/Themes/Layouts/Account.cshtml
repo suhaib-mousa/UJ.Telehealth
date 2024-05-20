@@ -1,0 +1,127 @@
+﻿@using Telehealth.Web.Public.Bundling;
+﻿@using Microsoft.Extensions.Localization
+@using Microsoft.Extensions.Options
+@using Volo.Abp.AspNetCore.MultiTenancy
+@using System.Globalization
+@using Volo.Abp.AspNetCore.Mvc.UI.Components.LayoutHook
+@using Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic.Bundling
+@using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic.Themes.Basic.Components.MainNavbar
+@using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic.Themes.Basic.Components.PageAlerts
+@using Volo.Abp.AspNetCore.Mvc.UI.Theming
+@using Volo.Abp.AspNetCore.Mvc.UI.Widgets.Components.WidgetScripts
+@using Volo.Abp.AspNetCore.Mvc.UI.Widgets.Components.WidgetStyles
+@using Volo.Abp.MultiTenancy
+@using Volo.Abp.Localization
+@using Volo.Abp.Ui.Branding
+@using Volo.Abp.Ui.LayoutHooks
+@inject IBrandingProvider BrandingProvider
+@inject IOptions<AbpMultiTenancyOptions> MultiTenancyOptions
+@inject ICurrentTenant CurrentTenant
+@inject IStringLocalizer<AbpUiMultiTenancyResource> MultiTenancyStringLocalizer
+@inject ITenantResolveResultAccessor TenantResolveResultAccessor
+<!doctype html>
+<html lang="en" data-bs-theme="light" dir="ltr" class="landing-pages">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Telehealth</title>
+    <!-- Config Options -->
+    <meta name="setting_options" content='{&quot;saveLocal&quot;:&quot;sessionStorage&quot;,&quot;storeKey&quot;:&quot;huisetting&quot;,&quot;setting&quot;:{&quot;app_name&quot;:{&quot;value&quot;:&quot;Kivicare&quot;}}}'>
+    <!-- Google Font Api KEY-->
+    <meta name="google_font_api" content="AIzaSyBG58yNdAjc20_8jAvLNSVi9E4Xhwjau_k">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./assets/images/favicon.ico" />
+
+    <abp-style-bundle name="@TelehealthThemeBundles.Styles.Global" />
+    @await RenderSectionAsync("styles", false)
+    @await Component.InvokeAsync(typeof(WidgetStylesViewComponent))
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,300;1,400;1,500&display=swap" rel="stylesheet">
+
+
+    <meta name="page_colors" content=''>
+</head>
+<body class=" body-bg landing-pages">
+
+
+        <div style="display: none">
+        <div class="card shadow-sm rounded mb-3">
+            <div class="card-body px-5">
+                <div class="row">
+                    <div class="col">
+                        <span style="font-size: .8em;" class="text-uppercase text-muted">@MultiTenancyStringLocalizer["Tenant"]</span><br />
+                        <h6 class="m-0 d-inline-block">
+                            @if (CurrentTenant.Id == null)
+                            {
+                                <span>
+                                    @MultiTenancyStringLocalizer["NotSelected"]
+                                </span>
+                            }
+                            else
+                            {
+                                <strong>@(CurrentTenant.Name ?? CurrentTenant.Id.Value.ToString())</strong>
+                            }
+                        </h6>
+                    </div>
+                    <div class="col-auto">
+                        <a id="AbpTenantSwitchLink" href="javascript:;" class="btn btn-sm mt-3 btn-outline-primary">@MultiTenancyStringLocalizer["Switch"]</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    <span class="screen-darken"></span>
+    <!-- loader Start -->
+    <div id="loading">
+        <div class="loader simple-loader">
+            <div class="loader-body">
+                <img src="~/images/favicon/telehealth.png" alt="loader" class="light-loader img-fluid " width="200">
+            </div>
+        </div>
+    </div>
+    <!-- loader END -->
+        <main class="main-content">
+            <div class="position-relative">
+                <!--Nav Start-->
+                <!--bread-crumb-->
+                <!--bread-crumb-->
+
+            </div>
+            <div class="sign-in-page position-relative">
+                <div class="container">
+                    <div class="row justify-content-center align-items-center height-self-center h-100">
+                        <div class="align-self-center">
+                        <div class="sign-user_card position-relative bg-white mx-auto w-75">
+                                <div class="logo-img text-center">
+                                    <a href="/" class="navbar-brand m-0">
+                                        <span class="logo-normal">
+                                            <img src="~/images/telehealth.png" alt="logo" class="img-fluid" loading="lazy" style="height: 100px">
+                                        </span>
+                                    </a>
+                                </div>
+                                @(await Component.InvokeAsync<PageAlertsViewComponent>())
+                                @RenderBody()
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+    <abp-script-bundle name="@TelehealthThemeBundles.Scripts.Global" />
+
+    <script src="~/Abp/ApplicationLocalizationScript?cultureName=@CultureInfo.CurrentUICulture.Name"></script>
+    <script src="~/Abp/ApplicationConfigurationScript"></script>
+    <script src="~/Abp/ServiceProxyScript"></script>
+
+    @await RenderSectionAsync("scripts", false)
+
+    @await Component.InvokeAsync(typeof(WidgetScriptsViewComponent))
+
+    @await Component.InvokeLayoutHookAsync(LayoutHooks.Body.Last, StandardLayouts.Account)
+</body>
+</html>
